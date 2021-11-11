@@ -40,6 +40,6 @@ export const userSlice = createSlice({
 export const { addUser, removeUser } = userSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectUser = (state: RootState) => state.user;
+// export const selectUser = (state: RootState) => state.user;
 
 export default userSlice.reducer;

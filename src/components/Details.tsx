@@ -1,10 +1,11 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import { useNavigate } from "react-router";
-import { selectUser } from "../redux_stuff/userSlicer";
+// import { selectUser } from "../redux_stuff/userSlicer";
 import { useDispatch, useSelector } from "react-redux";
 import { removeUser } from "../redux_stuff/userSlicer";
 import { makeStyles } from "@material-ui/core";
+import { RootState } from "../redux_stuff/store";
 
 const useStyle = makeStyles({
   heading: { display: "flex", color: "#898989", marginBottom: 5 },
@@ -12,10 +13,11 @@ const useStyle = makeStyles({
 });
 
 export const Details = (props: any) => {
-  const user = useSelector(selectUser);
+  const user = useSelector((state:RootState)=>state.user);
   const dispatch = useDispatch();
   const navigation = useNavigate();
   const styles = useStyle();
+  console.log(user);
   const handleClick = () => {
     dispatch(removeUser());
     navigation("..");
