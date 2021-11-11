@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from '@material-ui/core/Button';
-import { useLocation, useNavigate } from 'react-router';
+import {  useNavigate } from 'react-router';
 import { initialState, selectUser } from '../redux_stuff/userSlicer';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeUser } from '../redux_stuff/userSlicer';
@@ -8,7 +8,7 @@ export const Details = (props:any) => {
     const user=useSelector(selectUser);
     const dispatch=useDispatch();
     const navigation=useNavigate();
-    const data=useLocation();
+
 
     const handleClick=async()=>{
         await dispatch(removeUser(initialState))

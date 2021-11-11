@@ -1,13 +1,12 @@
-import React, { ChangeEvent, MouseEvent, useEffect, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { useNavigate } from 'react-router-dom';
-import { selectUser } from '../redux_stuff/userSlicer';
-import {addUser,removeUser} from '../redux_stuff/userSlicer';
+
+import {addUser} from '../redux_stuff/userSlicer';
 export const Signup = () => {
-    const user=useSelector(selectUser);
     const dispatch=useDispatch();
     const navigation=useNavigate();
  
