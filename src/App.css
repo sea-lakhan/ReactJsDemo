@@ -37,32 +37,35 @@
   }
 }
 
-.signup{
+
+.signupContainer{
   display: flex;
   flex:1;
+  height:50rem;
   flex-direction: column;
-  height: 55rem;
+  padding:2rem;
   justify-content: center;
-  align-items: center;
-  /* background-color:cadetblue; */
-}
-
-.formfields{
-  width: 40rem;
-  height: 20rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  padding:1rem;
   align-items: center;
 }
 
 .detailsContainer{
-  width: 40rem;
-  height: 20rem;
   display: flex;
+  width: 40rem;
+  height: 30rem;
+  flex:1;
   flex-direction: column;
-  justify-content: space-evenly;
-  padding:1rem;
+  justify-content: center;
   align-items: center;
+  border: 5px;
+}
+
+.formfields{
+  display: flex;
+  width: 40rem;
+  height: 30rem;
+  flex:1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 5px;
 }

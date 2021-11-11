@@ -1,25 +1,16 @@
 import React, { ChangeEvent, MouseEvent, useEffect, useState } from 'react'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { useNavigate } from 'react-router-dom';
-
-
-// type userDetails={
-//     name:string
-//     email:string
-//     username:string
-//     password:string
-// }
-// type navigationProps={
-//     pathname:string
-//     state:userDetails
-// }
-
+import { selectUser } from '../redux_stuff/userSlicer';
+import {addUser,removeUser} from '../redux_stuff/userSlicer';
 export const Signup = () => {
-
+    const user=useSelector(selectUser);
+    const dispatch=useDispatch();
     const navigation=useNavigate();
-
+ 
     const[name, setName]=useState('');
     const[email, setEmail]=useState('');
     const[username, setUsername]=useState('');
@@ -36,15 +27,16 @@ export const Signup = () => {
             setPassword(e.target.value)
     }
 
-    useEffect(() => {
+    useEffect(() => {    
         setPassword('');
     }, [username])
 
-    const handleClick=()=>{
-        console.log(name,email,username,password)
-            
+    const handleClick=async ()=>{     
         if(name && email && username && password){
-            navigation('/details',{state:{name,email,username,password}})
+            
+        console.log(name,email,username,password);
+            await dispatch(addUser({name:name,email:email,username:username,password:password}))
+            navigation('/details')
         }
         else {
             alert("Please enter all the details");
@@ -53,7 +45,7 @@ export const Signup = () => {
     }
 
     return (
-        <div className="signup">
+        <div className="signupContainer">
             <div className="formfields">
                 <h1 style={{display:"flex",color:"#898989"}}>Sign Up</h1>
                 <TextField style={{width:"100%", backgroundColor:'#ffffff', borderRadius:10, marginTop:10}} onChange={(event:ChangeEvent<HTMLInputElement>)=>handleChange(event,'name')} id="outlined-basic" label="Name" variant="outlined" />

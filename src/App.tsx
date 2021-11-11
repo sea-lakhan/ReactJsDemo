@@ -1,20 +1,27 @@
-
+import React from 'react';
+import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router';
 import { Signup } from './components/Signup';
 import { Details } from './components/Details';
-
-
+import { Provider } from 'react-redux';
+import { Store } from './redux_stuff/store';
 
 function App() {
   return (
-   <BrowserRouter>
     <Routes>
-        <Route  path="/" element={<Signup />}/>
-        <Route  path="/details" element={<Details />}/>
+      <Route path="/" element={<Signup />}/>
+      <Route path="/details" element={<Details />}/>
     </Routes>
-   </BrowserRouter>
   );
 }
 
-export default App;
+const AppWrapper=()=>{
+  return(
+  <Provider store={Store}>
+    <App />
+  </Provider>
+  )
+}
+
+export default AppWrapper;
